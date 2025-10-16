@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+public/models
+public/textures
+public/envmaps
+public/assets
