@@ -1,0 +1,260 @@
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+@import "tailwindcss";
+
+/* Define custom theme variables */
+@theme {
+  --font-generalsans: 'General Sans', sans-serif;
+  
+  /* Custom colors */
+  --color-black-200: rgb(23 23 28);
+  --color-black-300: rgb(26 26 31);
+  --color-black-500: rgb(31 31 36);
+  --color-black-600: rgb(15 15 19);
+  --color-white-500: rgb(156 163 175);
+  --color-white-600: rgb(209 213 219);
+  --color-white-800: rgb(243 244 246);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #010103;
+  font-family: var(--font-generalsans);
+}
+
+/* Define text-gray_gradient as a base component */
+@layer components {
+  .text-gray_gradient {
+    background-image: linear-gradient(
+      to right,
+      #BEC1CF 0%,
+      #BEC1CF 60%,
+      #D5D8EA 60%,
+      #D5D8EA 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .nav-li {
+    @apply py-2 text-neutral-400 hover:text-white;
+  }
+
+  @media (max-width: 639px) {
+    .nav-li {
+      @apply w-full rounded-md px-5;
+    }
+    .nav-li:hover {
+      background-color: var(--color-black-500);
+    }
+  }
+
+  .arrow-btn {
+    @apply h-10 w-10 cursor-pointer rounded-full p-3 transition-all active:scale-95;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 10%,
+      rgba(255, 255, 255, 0.000025) 50%,
+      rgba(255, 255, 255, 0.000025) 50%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .c-space {
+    @apply px-5 sm:px-10;
+  }
+
+  .head-text {
+    @apply text-3xl font-semibold sm:text-4xl;
+  }
+
+  .nav-ul {
+    @apply relative z-20 flex flex-col items-center gap-4 sm:flex-row md:gap-6;
+  }
+
+  .nav-li_a {
+    @apply text-lg transition-colors hover:text-white md:text-base;
+  }
+
+  .nav-sidebar {
+    @apply absolute left-0 right-0 z-20 mx-auto block backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden sm:hidden;
+    background-color: var(--color-black-200);
+  }
+
+  /* button component */
+  .btn {
+    @apply mx-auto flex cursor-pointer items-center justify-center gap-4 rounded-md p-3 text-white transition-all active:scale-95;
+    background-color: var(--color-black-300);
+  }
+
+  .btn-ping {
+    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75;
+  }
+
+  .btn-ping_dot {
+    @apply relative inline-flex h-3 w-3 rounded-full bg-green-500;
+  }
+
+  /* hero section */
+  .hero_tag {
+    @apply text-center text-3xl font-black !leading-normal sm:text-4xl md:text-5xl xl:text-6xl;
+  }
+
+  /* about section */
+  .grid-container {
+    @apply flex h-full w-full flex-col gap-5 rounded-lg p-4 sm:p-7;
+    border: 1px solid var(--color-black-300);
+    background-color: var(--color-black-200);
+  }
+
+  .grid-headtext {
+    @apply mb-2 text-xl font-semibold text-white;
+  }
+
+  .grid-subtext {
+    @apply text-base;
+    color: #afb0b6;
+  }
+
+  .copy-container {
+    @apply flex cursor-pointer items-center justify-center gap-2;
+  }
+
+  /* projects section  */
+  .tech-logo {
+    @apply flex h-10 w-10 items-center justify-center rounded-md p-2 backdrop-blur-lg;
+    background-color: rgb(245 245 245 / 0.1);
+  }
+
+  /* clients section */
+  .client-container {
+    @apply mt-12 grid grid-cols-1 gap-5 md:grid-cols-2;
+  }
+
+  .client-review {
+    @apply col-span-1 rounded-lg p-5 md:p-10;
+    background-color: rgb(26 26 31 / 0.5);
+  }
+
+  .client-content {
+    @apply mt-7 flex flex-col items-start justify-between gap-5 lg:flex-row lg:items-center;
+  }
+
+  /*  work experience section */
+  .work-container {
+    @apply mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3;
+  }
+
+  .work-canvas {
+    @apply col-span-1 rounded-lg;
+    border: 1px solid var(--color-black-300);
+    background-color: var(--color-black-200);
+  }
+
+  .work-content {
+    @apply col-span-2 rounded-lg;
+    border: 1px solid var(--color-black-300);
+    background-color: var(--color-black-200);
+  }
+
+  .work-content_container {
+    @apply grid cursor-pointer grid-cols-[auto_1fr] items-start gap-5 rounded-lg px-2.5 transition-all duration-500 ease-in-out sm:px-5;
+  }
+
+  .work-content_container:hover {
+    background-color: var(--color-black-300);
+  }
+
+  .work-content_logo {
+    @apply h-16 w-16 rounded-3xl p-2;
+    background-color: var(--color-black-600);
+  }
+
+  .work-content_bar {
+    @apply mt-4 h-full w-0.5 flex-1 group-last:hidden;
+    background-color: var(--color-black-300);
+  }
+
+  .work-content_bar:hover {
+    background-color: var(--color-black-500);
+  }
+
+  /* contact section */
+  .contact-container {
+    @apply relative z-10 mt-12 max-w-xl px-5 sm:px-10;
+  }
+
+  .field-label {
+    @apply text-lg;
+    color: var(--color-white-600);
+  }
+
+  .field-input {
+    @apply min-h-14 w-full rounded-lg px-5 py-2 text-lg shadow-2xl focus:outline-none;
+    background-color: var(--color-black-300);
+    color: var(--color-white-800);
+    box-shadow: 0 25px 50px -12px var(--color-black-200);
+  }
+
+  .field-input::placeholder {
+    color: var(--color-white-500);
+  }
+
+  .field-btn {
+    @apply flex min-h-12 items-center justify-center gap-3 rounded-lg px-5 py-2 text-lg text-white shadow-2xl;
+    background-color: var(--color-black-500);
+    box-shadow: 0 25px 50px -12px var(--color-black-200);
+  }
+
+  .field-btn_arrow {
+    @apply h-2.5 w-2.5 brightness-0 invert object-contain;
+  }
+
+  /*  footer */
+  .social-icon {
+    @apply flex h-12 w-12 items-center justify-center rounded-full;
+    background-color: var(--color-black-300);
+    border: 1px solid var(--color-black-200);
+  }
+}
+
+.waving-hand {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
